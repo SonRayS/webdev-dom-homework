@@ -6,30 +6,23 @@
     import { formHtml } from "./modules/formHtml.js";
     import { surfacing } from "./modules/replyComment.js";
     import { handerLike } from "./modules/likeBtn.js";
+    import { getElement } from "./modules/getElementById.js";
+    import { renderLogin } from "./modules/author.js";
+    import { renderReg } from "./modules/registration.js";
 
-    /* ------------------------------------------------------------------
-    *
-                                getElementById
-    *
-    __________________________________________________________________ */
-
-    const sendButton = document.getElementById("buttonSend");
-    const getListComment = document.getElementById("listComment");
-    const getName = document.getElementById("inputGetName");
-    const getComment = document.getElementById("inputGetComment");
-    const hideSendForm = document.getElementById("hideForm");
-    const hideTextForm = document.getElementById("hideText");
-    
   /* ------------------------------------------------------------------
   *
                                 getListComponent
   *
   __________________________________________________________________ */
 
+  const getComment = document.getElementById("inputGetComment");
+
+
   function getListComponent() {
 
-      hideSendForm.style.display = "none";
-      hideTextForm.style.display = "flex";
+    getElement().hideSendForm.style.display = "none";
+    getElement().hideTextForm.style.display = "flex";
 
       getTodos().then((responseData) => {
         
@@ -49,11 +42,10 @@
               }
           })
           
-          console.log(responseData);
+          //console.log(responseData);
           user = appComment;
           render();
-          hideTextForm.style.display = "none";
-          hideSendForm.style.display = "flex";
+          getElement().hideTextForm.style.display = "none";
       })
       .catch((error) => {
         alert("Кажется, у вас сломался интернет, попробуйте позже");
@@ -61,8 +53,10 @@
       });
 
   }
-
+  
   getListComponent();
+
+ 
 
   let user = [];
 
@@ -76,8 +70,8 @@ __________________________________________________________________ */
 function render() {
 
             formHtml({
-                user,
-                getListComment
+              user,
+              getListComment: getElement().getListComment
             })
             
             handerLike({
@@ -86,12 +80,30 @@ function render() {
             });
 
             surfacing({
-              getComment
+              getComment: getElement().getComment
             });
   }
 
-    render();
+  getElement().authorUser.addEventListener("click", () => {
 
+      listComment.style.display = "none";
+      authorText.style.display = "none";
+      renderLogin({ getListComponent,
+                    renderReg
+                 });
+      
+  })  
+
+
+
+  getElement().btnReg.addEventListener("click", () => {
+      listComment.style.display = "none";
+      authorText.style.display = "none";
+      btnReg.style.display = "none";
+      renderReg({ renderLogin,
+                  renderReg,
+                  getListComponent });
+  })
 
 /* ------------------------------------------------------------------
 *
@@ -101,39 +113,39 @@ __________________________________________________________________ */
 
 const sendBtn = () => {
 
-        hideSendForm.style.display = "none";
-        hideTextForm.style.display = "flex";
+        getElement().hideSendForm.style.display = "none";
+        getElement().hideTextForm.style.display = "flex";
       
-        if (getName.value != '' && getComment.value != '') {
+        if (getElement().getName.value != '' && getElement().getComment.value != '') {
           
 
             postTodo({
-                name: getName.value,
-                text: getComment.value,
+                name: getElement().getName.value,
+                text: getElement().getComment.value,
                 date: myTime()
             })
             .then((response) => {
                 return getListComponent();
             })
             .then(() => {
-                hideTextForm.style.display = "none";
-                getName.value = "",
-                getComment.value = "";
-                hideSendForm.style.display = "flex";
+                getElement().hideTextForm.style.display = "none";
+                getElement().getName.value = "",
+                getElement().getComment.value = "";
+                getElement().hideSendForm.style.display = "flex";
             })
             .catch((error) => {
                 if (error.message == 500){
                     console.log(error);
-                    hideTextForm.style.display = "none";
-                    hideSendForm.style.display = "flex";
-                    sendBtn();
+                    getElement().hideTextForm.style.display = "none";
+                    getElement().hideSendForm.style.display = "flex";
+                    /* sendBtn(); */
                 } else if (error.message = 400) {
                     console.log('Type > 2 symbol: ',error);
-                    hideTextForm.style.display = "none";
-                    hideSendForm.style.display = "flex";
+                    getElement().hideTextForm.style.display = "none";
+                    getElement().hideSendForm.style.display = "flex";
                 }
             });
         }
 }
 
-sendButton.addEventListener("click", sendBtn);
+getElement().sendButton.addEventListener("click", sendBtn);
