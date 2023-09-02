@@ -257,10 +257,26 @@ body {
     display: flex;
   }
 
+  .userBtnsOut{
+    font-size: 24px;
+    padding: 10px 20px;
+    background-color: #bcec30;
+    border: none;
+    border-radius: 18px;
+    color: black;
+    margin-top: 64px;
+    display: none;
+  }
+
   .userHideForm{
     display: none;
   }
 
   .app{
     display: none;
+  }
+
+  .userBtnsOut a{
+    text-decoration: none;
+    color: black;
   }
