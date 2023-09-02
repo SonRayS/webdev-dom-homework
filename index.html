@@ -8,16 +8,20 @@
 
   <body class="body">
     <div class="container">
+
       <ul class="comments" id="listComment">
         <!-- generation with js -->
       </ul>
+
       <li class="hideTestM" id="hideText" style="display: none;"><h2>Подождите, пожалуйста, идет загрузка комментариев...</h2></li>
       <div class="add-form" id="hideForm" style="display: flex;">
+
         <input
           id = "inputGetName"
           type="text"
           class="add-form-name"
           placeholder="Введите ваше имя"
+          readonly
         />
         
         <textarea
@@ -27,18 +31,32 @@
           placeholder="Введите ваш коментарий"
           rows="4"
         ></textarea>
+
         <div class="add-form-row">
           <button id = "buttonSend" class="add-form-button">Написать</button>
         </div>
       </div>
+
+      <div id="app">
+        <!-- render Html form in author -->
+      </div>
+
+      <div id="appReg">
+        <!-- render Html form in author -->
+      </div>
+
+      <div class="authorText" id="authorText">
+        <li class="author">Чтобы добавить комментарий, <a href="#" id="authorUser"><b>авторизуйтесь</b></a>.</li>
+      </div>
+
+      <button id="btnReg" class="userBtns">Зарегистрироваться</button>
+      
     </div>
     <style>
       .error {
-          background-color: rgb(212, 141, 141);
+          background-color: rgb(167, 93, 93);
       }
     </style>
-
     <script type="module" src="main.js"></script>
-    
   </body>
 </html>  

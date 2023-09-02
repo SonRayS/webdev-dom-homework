@@ -18,6 +18,8 @@ export function formHtml({user, getListComment}) {
             </div>
           </li>
         `}).join('');
+
+        
         
         getListComment.innerHTML = result;
 }

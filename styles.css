@@ -141,3 +141,126 @@ body {
   .add-form-button:hover {
     opacity: 0.9;
   }
+
+  
+  footer{
+    background: rgb(32, 32, 32);
+    padding-top: 64px;
+    padding-bottom: 64px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  .reg{
+    font-size: 24px;
+    color: black;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    filter: drop-shadow(0px 20px 67px rgba(0, 0, 0, 0.08));
+  }
+
+  .regs{
+    font-size: 24px;
+    color: black;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    align-items: center;
+    align-content: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+
+  .regs button{
+    margin: 24px;
+  }
+
+  .reg:hover{
+    color: #ffffff;
+  }
+
+  .author{
+    margin-top: 24px;
+    text-decoration: none;
+    list-style-type: none;
+  }
+
+  .author a{
+    color: #ffffff;
+  }
+
+  .author a:hover{
+    color:#7334ea;
+  }
+
+  .userDate {
+    width: 300px;
+    padding: 11px 22px;
+    margin-bottom: 12px;
+    margin-top: 12px;
+    font-size: 16px;
+    font-family: Helvetica;
+    border-radius: 8px;
+    border: none;
+    display: flex;
+    justify-content: center;
+  }
+
+  .userRegForm button:hover{
+    background-color: #bcec30;
+    color: white;
+  }
+
+  .userRegForm button{
+    width: 344px;
+  }
+
+  .userRegForm{
+    width: 400px;
+    height: 350px;
+    box-sizing: border-box;
+    background: radial-gradient(
+      75.42% 75.42% at 50% 42.37%,
+      rgba(53, 53, 53, 0) 22.92%,
+      #7334ea 100%
+    );
+    filter: drop-shadow(0px 20px 67px rgba(0, 0, 0, 0.08));
+    display: flex;
+    border-radius: 20px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+  }
+
+  .userBtn{
+    font-size: 24px;
+    padding: 10px 20px;
+    background-color: #bcec30;
+    border: none;
+    border-radius: 18px;
+    color: black;
+    display: flex;
+    justify-content:center;
+  }
+
+  .userBtns{
+    font-size: 24px;
+    padding: 10px 20px;
+    background-color: #bcec30;
+    border: none;
+    border-radius: 18px;
+    color: black;
+    margin-top: 64px;
+    display: flex;
+  }
+
+  .userHideForm{
+    display: none;
+  }
+
+  .app{
+    display: none;
+  }
