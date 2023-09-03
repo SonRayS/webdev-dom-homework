@@ -2,7 +2,7 @@ import { sendUserTodo } from "./api.js";
 import { getElement } from "./getElementById.js";
 
 export function renderReg ({ renderLogin, getListComponent, renderReg}) {
-        const regElement = document.getElementById("appReg")
+
         const registrationHtml = `
         <div class="container">
                 <div class="userRegForm">
@@ -37,38 +37,39 @@ export function renderReg ({ renderLogin, getListComponent, renderReg}) {
                 </footer>
         </div>`
 
-        regElement.innerHTML = registrationHtml;
+        getElement().regElement.innerHTML = registrationHtml;
 
         const sendUrl = "https://wedev-api.sky.pro/api/user"
 
-        const userLogin = document.getElementById("userLogin");
-        const userName = document.getElementById("userLogin");
-        const userPassword = document.getElementById("userLogin");
-        const sendBtn = document.getElementById("sendBtn");
-        const goToReg = document.getElementById("goToReg");
         let token = "";
 
-        goToReg.addEventListener("click", () => {
+        getElement().goToReg.addEventListener("click", () => {
 
                 renderLogin({ getListComponent, renderReg })
 
         })
 
-        sendBtn.addEventListener("click", () => {
+        getElement().sendBtn.addEventListener("click", () => {
 
-                if (userLogin.value != '' && userName.value != '' && userPassword.value != '') {
+                if (getElement().userLogin.value != '' && getElement().userName.value != '' && getElement().userPassword.value != '') {
 
                         sendUserTodo({
                                 sendUrl: sendUrl,
-                                userLogin: userLogin.value.replaceAll("<", "&lt").replaceAll(">","&gt").replaceAll('"', "&quot;").replaceAll("&", "&amp;"),
-                                userName: userName.value.replaceAll("<", "&lt").replaceAll(">","&gt").replaceAll('"', "&quot;").replaceAll("&", "&amp;"),
-                                userPassword: userPassword.value
+                                userLogin: getElement().userLogin.value.replaceAll("<", "&lt").replaceAll(">","&gt").replaceAll('"', "&quot;").replaceAll("&", "&amp;"),
+                                userName: getElement().userName.value.replaceAll("<", "&lt").replaceAll(">","&gt").replaceAll('"', "&quot;").replaceAll("&", "&amp;"),
+                                userPassword: getElement().userPassword.value
                         })
                         .then((response) => {
 
                                 console.log(response)
                                 console.log(response.user.token)
                                 alert("Ваш аккаунт успешно создан")
+                        })
+                        .then(() => {
+                                renderReg({ renderLogin,
+                                            renderReg,
+                                            getListComponent 
+                                          });
                         })
                         .catch((error) => {
 

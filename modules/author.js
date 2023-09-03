@@ -1,8 +1,10 @@
 import { getElement } from "./getElementById.js";
 import { sendTodo, setToken, token} from "./api.js";
+import { saveUserToLocalStorage } from "./localStorage.js";
+import { removeUserStorage } from "./localStorage.js";
 
 export function renderLogin ({ getListComponent, renderReg }) {
-        const appElement = document.getElementById("app");
+
         const loginHtml = `
         <div class="container">
                 <div class="userRegForm" id="userRegForm">
@@ -28,13 +30,7 @@ export function renderLogin ({ getListComponent, renderReg }) {
                 </div>
         </div>`;
 
-        appElement.innerHTML = loginHtml;
-
-        const sendUserLogin = document.getElementById("sendUserLogin");
-        const sendUserPassword = document.getElementById("sendUserPassword");
-        const sendUserDate = document.getElementById("sendUserDate");
-        const userRegForm = document.getElementById("userRegForm");
-        const userHideForm = document.getElementById("userHideForm");
+        getElement().appElement.innerHTML = loginHtml;
 
         const sendDate = "https://wedev-api.sky.pro/api/user/login";
 
@@ -44,18 +40,18 @@ export function renderLogin ({ getListComponent, renderReg }) {
         })
        
 
-        sendUserDate.addEventListener("click", () => {
+        getElement().sendUserDate.addEventListener("click", () => {
 
-                if(sendUserLogin.value != '' && sendUserPassword != '') {
+                if(getElement().sendUserLogin.value != '' && getElement().sendUserPassword != '') {
 
                         
                         sendTodo({
 
                                 url: sendDate,
-                                login: sendUserLogin.value,
-                                password: sendUserPassword.value,
-                                userForm: userRegForm,
-                                userHideForm: userHideForm
+                                login: getElement().sendUserLogin.value,
+                                password: getElement().sendUserPassword.value,
+                                userForm: getElement().userRegForm,
+                                userHideForm: getElement().userHideForm
 
                         })
                         .then((response) => {
@@ -75,6 +71,18 @@ export function renderLogin ({ getListComponent, renderReg }) {
                                 getListComponent(); 
                                 getElement().hideSendForm.style.display = "flex";
 
+                                return response;
+
+                        })
+                        .then((response) => {
+
+                                const user = response;
+                                saveUserToLocalStorage(user);
+                                getElement().outBtn.style.display = "flex";
+                                getElement().outBtn.addEventListener("click", () => {
+                                  removeUserStorage(user);
+                                })
+
                         })
                         .catch((error) => {
                                
@@ -90,5 +98,4 @@ export function renderLogin ({ getListComponent, renderReg }) {
                 }
         })
 }
-
 
