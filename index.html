@@ -1,63 +1,70 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <title>Проект "Комменты"</title>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
+    <head>
+        <title>Проект "Комменты"</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="styles.css" />
+    </head>
 
-  <body class="body">
-    <div class="container">
+    <body class="body">
+        <div class="container">
+            <ul class="comments" id="listComment">
+                <!-- generation with js -->
+            </ul>
 
-      <ul class="comments" id="listComment">
-        <!-- generation with js -->
-      </ul>
+            <li class="hideTestM" id="hideText" style="display: none">
+                <h2>Подождите, пожалуйста, идет загрузка комментариев...</h2>
+            </li>
+            <div class="add-form" id="hideForm" style="display: flex">
+                <input
+                    id="inputGetName"
+                    type="text"
+                    class="add-form-name"
+                    placeholder="Введите ваше имя"
+                    readonly
+                />
 
-      <li class="hideTestM" id="hideText" style="display: none;"><h2>Подождите, пожалуйста, идет загрузка комментариев...</h2></li>
-      <div class="add-form" id="hideForm" style="display: flex;">
+                <textarea
+                    id="inputGetComment"
+                    type="textarea"
+                    class="add-form-text"
+                    placeholder="Введите ваш коментарий"
+                    rows="4"
+                ></textarea>
 
-        <input
-          id = "inputGetName"
-          type="text"
-          class="add-form-name"
-          placeholder="Введите ваше имя"
-          readonly
-        />
-        
-        <textarea
-          id = "inputGetComment"
-          type="textarea"
-          class="add-form-text"
-          placeholder="Введите ваш коментарий"
-          rows="4"
-        ></textarea>
+                <div class="add-form-row">
+                    <button id="buttonSend" class="add-form-button">
+                        Написать
+                    </button>
+                </div>
+            </div>
 
-        <div class="add-form-row">
-          <button id = "buttonSend" class="add-form-button">Написать</button>
+            <div id="app">
+                <!-- render Html form in author -->
+            </div>
+
+            <div id="appReg">
+                <!-- render Html form in author -->
+            </div>
+
+            <div class="authorText" id="authorText">
+                <li class="author">
+                    Чтобы добавить комментарий,
+                    <a href="#" id="authorUser"><b>авторизуйтесь</b></a
+                    >.
+                </li>
+            </div>
+
+            <button id="btnReg" class="userBtns">Зарегистрироваться</button>
+            <button id="outBtn" class="userBtnsOut">
+                <a href="index.html"> Выйти из аккаунта </a>
+            </button>
         </div>
-      </div>
-
-      <div id="app">
-        <!-- render Html form in author -->
-      </div>
-
-      <div id="appReg">
-        <!-- render Html form in author -->
-      </div>
-
-      <div class="authorText" id="authorText">
-        <li class="author">Чтобы добавить комментарий, <a href="#" id="authorUser"><b>авторизуйтесь</b></a>.</li>
-      </div>
-
-      <button id="btnReg" class="userBtns">Зарегистрироваться</button>
-      <button id="outBtn" class="userBtnsOut"><a href="index.html"> Выйти из аккаунта </a></button> 
-
-    </div>
-    <style>
-      .error {
-          background-color: rgb(167, 93, 93);
-      }
-    </style>
-    <script type="module" src="main.js"></script>
-  </body>
-</html>  
+        <style>
+            .error {
+                background-color: rgb(167, 93, 93);
+            }
+        </style>
+        <script src="./dist/main.js"></script>
+    </body>
+</html>
