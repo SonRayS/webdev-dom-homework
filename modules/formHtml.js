@@ -1,6 +1,7 @@
-export function formHtml({user, getListComment}) {
-  const result = user.map((el, index) => {
-    return `<li class="comment" data-index="${index}" data-comment="${el.text}" data-name="${el.name}">
+export function formHtml({ user, getListComment }) {
+    const result = user
+        .map((el, index) => {
+            return `<li class="comment" data-index="${index}" data-comment="${el.text}" data-name="${el.name}">
             <div class="comment-header">
               <div>${el.name}</div>
               <div>${el.date}</div>
@@ -17,9 +18,9 @@ export function formHtml({user, getListComment}) {
               </div>
             </div>
           </li>
-        `}).join('');
+        `;
+        })
+        .join("");
 
-        
-        
-        getListComment.innerHTML = result;
+    getListComment.innerHTML = result;
 }

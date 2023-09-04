@@ -1,0 +1,7 @@
+trailingComma: "es5"
+tabWith: 4
+semi: false
+singleQuote: true
+printWith: 80
+eslintIntegration: true
+stylelintIntegration: true
