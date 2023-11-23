@@ -5,3 +5,4 @@ singleQuote: true
 printWith: 80
 eslintIntegration: true
 stylelintIntegration: true
+endOfLine: auto

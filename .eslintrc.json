@@ -4,7 +4,7 @@
         "es6": true,
         "node": true
     },
-    "extends": ["plugin:@typescript-eslint/recommended"],
+    "extends": ["plugin:@typescript-eslint/recommended", "prettier"],
     "parser": "@typescript-eslint/parser",
     "plugins": ["@typescript-eslint", "prettier"],
     "globals": {
@@ -24,7 +24,12 @@
         "project": "./tsconfig.json"
     },
     "rules": {
-        "prettier/prettier": "error",
+        "prettier/prettier": [
+            "error",
+            {
+                "endOfLine": "auto"
+            }
+        ],
         "@typescript-eslint/member-delimiter-style": "off",
         "@typescript-eslint/interface-name-prefix": ["warn", "always"],
         "@typescript-eslint/explicit-function-return-type": [
